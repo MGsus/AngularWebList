@@ -55,7 +55,8 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - set -e -o pipefail;
-          ibmcloud login -a $API -r $REGION -g demo-iks;
+          ibmcloud login -a $API -r $REGION;
+	  ibmcloud target -g demo-iks
           export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";
           cd /workspace && source .tekton/scripts/pre-build-check.sh;
     - name: build-docker-image
